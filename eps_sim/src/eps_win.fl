@@ -1,0 +1,1299 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0302 
+header_name {.hpp} 
+code_name {.cpp}
+decl {\#undef Status} {public global
+} 
+
+decl {\#include "widgets.hpp"} {public global
+} 
+
+decl {using namespace itc::eps;} {private global
+} 
+
+widget_class EpsWindow {
+  label {Clyde Space EPS 3G (3UA)} open
+  xywh {800 52 900 850} type Double
+  class Fl_Window visible
+} {
+  decl {itc::eps::TlmWidgetMap tlm;} {public local
+  }
+  Fl_Group {} {
+    label Sim
+    xywh {15 15 140 75} box GTK_DOWN_FRAME labelfont 1 align 17
+  } {
+    Fl_Light_Button nos_status_out {
+      label {NOS Connection}
+      xywh {20 40 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 2 labelsize 12 align 8
+      code0 {o->set_output();}
+    }
+    Fl_Value_Output sim_time_out {
+      label {Time (s)}
+      xywh {75 60 70 20} labelsize 12 textsize 12
+    }
+  }
+  Fl_Group {} {
+    label Board
+    xywh {15 105 140 425} box GTK_DOWN_FRAME labelfont 1 align 17
+  } {
+    Fl_Group {} {
+      xywh {25 125 125 70} align 5
+    } {
+      Fl_Value_Output firmware_out {
+        label Firmware
+        xywh {95 130 50 20} labelsize 12 textsize 12
+      }
+      Fl_Value_Output revision_out {
+        label Revision
+        xywh {95 150 50 20} labelsize 12 textsize 12
+      }
+      Fl_Output checksum_out {
+        label Checksum
+        xywh {95 170 50 20} color 49 labelsize 12 textsize 12
+        code0 {o->cursor_color(FL_BACKGROUND_COLOR);}
+      }
+    }
+    Fl_Box {} {
+      xywh {25 202 120 2} box THIN_DOWN_BOX
+    }
+    Fl_Group {} {
+      label {Reset Counts}
+      xywh {25 230 125 90} labelsize 12 align 5
+    } {
+      Fl_Value_Output reset_power_on_out {
+        label {Power On}
+        xywh {95 235 50 20} labelsize 12 textsize 12
+      }
+      Fl_Value_Output reset_brown_out {
+        label {Brown Out}
+        xywh {95 255 50 20} labelsize 12 textsize 12
+      }
+      Fl_Value_Output reset_manual_out {
+        label Manual
+        xywh {95 275 50 20} labelsize 12 textsize 12
+      }
+      Fl_Value_Output reset_wdt_out {
+        label WDT
+        xywh {95 295 50 20} labelsize 12 textsize 12
+      }
+    }
+    Fl_Box {} {
+      xywh {25 327 120 2} box THIN_DOWN_BOX
+    }
+    Fl_Group {} {
+      label Status
+      xywh {25 355 125 110} labelsize 12 align 5
+    } {
+      Fl_Light_Button {status_out[0]} {
+        label {Invalid Cmd}
+        xywh {30 355 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[1]} {
+        label {WDT Reset}
+        xywh {30 370 14 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[2]} {
+        label {Invalid Data}
+        xywh {30 385 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[3]} {
+        label {Invalid Channel}
+        xywh {30 400 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[4]} {
+        label {EEPROM Error}
+        xywh {30 415 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[5]} {
+        label {Power On Reset}
+        xywh {30 430 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+      Fl_Light_Button {status_out[6]} {
+        label {Brown Out Reset}
+        xywh {30 445 15 20} box NO_BOX down_box GTK_ROUND_DOWN_BOX selection_color 1 labelsize 12 align 8
+        code0 {o->set_output();}
+      }
+    }
+    Fl_Box {} {
+      xywh {25 470 120 2} box THIN_DOWN_BOX
+    }
+    Fl_Output error_code_out {
+      label {Last Error}
+      xywh {90 480 55 20} color 49 labelsize 12 textsize 12
+      code0 {o->cursor_color(FL_BACKGROUND_COLOR);}
+    }
+    Fl_Output error_msg_out {
+      xywh {25 500 120 20} color 49 selection_color 49 labelsize 12 textfont 2 textsize 12
+      code0 {o->cursor_color(FL_BACKGROUND_COLOR);}
+    }
+  }
+  Fl_Group {} {
+    label Telemetry open
+    xywh {170 15 715 821} box GTK_DOWN_FRAME color 51 labelfont 1 align 17
+  } {
+    Fl_Group {} {
+      label {Battery Charge Regulator} open
+      xywh {175 40 235 796} labelsize 12 align 17
+    } {
+      Fl_Group {} {
+        xywh {175 60 230 150}
+      } {
+        Fl_Value_Output {} {
+          label VBCR1
+          xywh {235 65 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR1].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR1A
+          xywh {235 85 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR1B
+          xywh {235 105 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR1A
+          xywh {235 125 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR1B
+          xywh {235 145 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR1A
+          xywh {235 165 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR1B
+          xywh {235 185 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 65 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR1].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 85 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 105 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 125 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 145 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 165 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 185 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1B].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {340 65 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR1].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 85 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 105 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR1B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 125 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 145 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR1B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 165 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1A].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 185 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR1B].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {175 215 230 150}
+      } {
+        Fl_Value_Output {} {
+          label VBCR2
+          xywh {235 220 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR2].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR2A
+          xywh {235 240 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR2B
+          xywh {235 260 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR2A
+          xywh {235 280 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR2B
+          xywh {235 300 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR2A
+          xywh {235 320 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR2B
+          xywh {235 340 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 220 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR2].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 240 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 260 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 280 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 300 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 320 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 340 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2B].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {340 220 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR2].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 240 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 260 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR2B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 280 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 300 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR2B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 320 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2A].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 340 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR2B].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {175 370 230 150}
+      } {
+        Fl_Value_Output {} {
+          label VBCR3
+          xywh {235 375 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR3].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR3A
+          xywh {235 395 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR3B
+          xywh {235 415 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR3A
+          xywh {235 435 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR3B
+          xywh {235 455 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR3A
+          xywh {235 475 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR3B
+          xywh {235 495 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 375 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR3].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 395 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 415 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 435 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 455 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 475 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 495 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3B].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {340 375 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR3].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 395 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 415 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR3B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 435 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 455 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR3B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 475 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3A].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 495 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR3B].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {175 525 230 150}
+      } {
+        Fl_Value_Output {} {
+          label VBCR4
+          xywh {235 530 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR4].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR4A
+          xywh {235 550 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR4B
+          xywh {235 570 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR4A
+          xywh {235 590 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR4B
+          xywh {235 610 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR4A
+          xywh {235 630 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR4B
+          xywh {235 650 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 530 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR4].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 550 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 570 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 590 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 610 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 630 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 650 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4B].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {340 530 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR4].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 550 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 570 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR4B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 590 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 610 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR4B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 630 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4A].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 650 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR4B].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {selected
+        xywh {175 680 230 150}
+      } {
+        Fl_Value_Output {} {
+          label VBCR5
+          xywh {235 685 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR5].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR5A
+          xywh {235 705 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IBCR5B
+          xywh {235 725 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR5A
+          xywh {235 745 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label TBCR5B
+          xywh {235 765 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR5A
+          xywh {235 785 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5A].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label SDBCR5B
+          xywh {235 805 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5B].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 685 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR5].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 705 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 725 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 745 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 765 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5B].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 785 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5A].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {280 805 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5B].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {340 685 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VBCR5].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 705 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 725 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IBCR5B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 745 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5A].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 765 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_TBCR5B].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 785 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5A].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {340 805 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_SDBCR5B].analog_in = o;}
+          code1 {o->type(FL_INT_INPUT);}
+          code2 {o->step(1);}
+          code3 {o->range(0, 1024);}
+          class TlmInput
+        }
+      }
+    }
+    Fl_Group {} {
+      label {Power Conditioning Module}
+      xywh {410 40 240 240} labelsize 12 align 17
+    } {
+      Fl_Group {} {
+        xywh {410 60 235 50}
+      } {
+        Fl_Value_Output {} {
+          label VPCMBATV
+          xywh {475 65 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCMBATV].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IPCMBATV
+          xywh {475 85 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCMBATV].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 65 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCMBATV].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 85 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCMBATV].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {580 65 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCMBATV].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {580 85 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCMBATV].analog_in = o;}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {410 115 235 50}
+      } {
+        Fl_Value_Output {} {
+          label VPCM12V
+          xywh {475 120 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM12V].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IPCM12V
+          xywh {475 140 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM12V].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 120 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM12V].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 140 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM12V].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {580 120 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM12V].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {580 140 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM12V].analog_in = o;}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {410 170 235 50}
+      } {
+        Fl_Value_Output {} {
+          label VPCM5V
+          xywh {475 175 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM5V].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IPCM5V
+          xywh {475 195 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM5V].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 175 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM5V].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 195 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM5V].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {580 175 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM5V].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {580 195 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM5V].analog_in = o;}
+          class TlmInput
+        }
+      }
+      Fl_Group {} {
+        xywh {410 225 235 50}
+      } {
+        Fl_Value_Output {} {
+          label VPCM3V3
+          xywh {475 230 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM3V3].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          label IPCM3V3
+          xywh {475 250 45 20} labelfont 4 labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM3V3].digital_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 230 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM3V3].analog_out = o;}
+        }
+        Fl_Value_Output {} {
+          xywh {520 250 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM3V3].analog_out = o;}
+        }
+        Fl_Value_Input {} {
+          xywh {580 230 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_VPCM3V3].analog_in = o;}
+          class TlmInput
+        }
+        Fl_Value_Input {} {
+          xywh {580 250 60 20} labelsize 12 textsize 12
+          code0 {tlm[CHANNEL_IPCM3V3].analog_in = o;}
+          class TlmInput
+        }
+      }
+    }
+    Fl_Group {} {
+      label EPS
+      xywh {410 295 240 135} labelsize 12 align 17
+    } {
+      Fl_Value_Output {} {
+        label IIDIODE
+        xywh {475 320 45 20} labelfont 4 labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_IIDIODE].digital_out = o;}
+      }
+      Fl_Value_Output {} {
+        label VIDIODE
+        xywh {475 340 45 20} labelfont 4 labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_VIDIODE].digital_out = o;}
+      }
+      Fl_Value_Output {} {
+        label I3V3_DRW
+        xywh {475 360 45 20} labelfont 4 labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I3V3_DRW].digital_out = o;}
+      }
+      Fl_Value_Output {} {
+        label I5V_DRW
+        xywh {475 380 45 20} labelfont 4 labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I5V_DRW].digital_out = o;}
+      }
+      Fl_Value_Output {} {
+        label TBRD
+        xywh {475 400 45 20} labelfont 4 labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_TBRD].digital_out = o;}
+      }
+      Fl_Value_Output {} {
+        xywh {520 320 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_IIDIODE].analog_out = o;}
+      }
+      Fl_Value_Output {} {
+        xywh {520 340 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_VIDIODE].analog_out = o;}
+      }
+      Fl_Value_Output {} {
+        xywh {520 360 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I3V3_DRW].analog_out = o;}
+      }
+      Fl_Value_Output {} {
+        xywh {520 380 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I5V_DRW].analog_out = o;}
+      }
+      Fl_Value_Output {} {
+        xywh {520 400 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_TBRD].analog_out = o;}
+      }
+      Fl_Value_Input {} {
+        xywh {580 320 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_IIDIODE].analog_in = o;}
+        class TlmInput
+      }
+      Fl_Value_Input {} {
+        xywh {580 340 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_VIDIODE].analog_in = o;}
+        class TlmInput
+      }
+      Fl_Value_Input {} {
+        xywh {580 360 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I3V3_DRW].analog_in = o;}
+        class TlmInput
+      }
+      Fl_Value_Input {} {
+        xywh {580 380 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_I5V_DRW].analog_in = o;}
+        class TlmInput
+      }
+      Fl_Value_Input {} {
+        xywh {580 400 60 20} labelsize 12 textsize 12
+        code0 {tlm[CHANNEL_TBRD].analog_in = o;}
+        class TlmInput
+      }
+    }
+    Fl_Group {} {
+      label {Power Distribution Module}
+      xywh {650 40 230 785} labelsize 12 align 17
+    } {
+      Fl_Group {} {open
+        xywh {655 60 225 50}
+      } {
+        Fl_Group {} {
+          xywh {655 60 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW1
+            xywh {690 65 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW1].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW1
+            xywh {690 85 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW1].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 65 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW1].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 85 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW1].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 65 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW1].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 85 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW1].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[0]} {
+          xywh {860 75 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {open
+        xywh {655 115 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 115 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW2
+            xywh {690 120 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW2].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW2
+            xywh {690 140 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW2].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 120 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW2].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 140 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW2].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 120 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW2].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 140 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW2].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[1]} {
+          xywh {860 130 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 170 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 170 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW3
+            xywh {690 175 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW3].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW3
+            xywh {690 195 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW3].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 175 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW3].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 195 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW3].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 175 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW3].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 195 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW3].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[2]} {
+          xywh {860 185 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 225 225 55}
+      } {
+        Fl_Group {} {open
+          xywh {655 225 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW4
+            xywh {690 230 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW4].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW4
+            xywh {690 250 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW4].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 230 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW4].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 250 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW4].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 230 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW4].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 250 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW4].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[3]} {
+          xywh {860 240 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 280 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 280 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW5
+            xywh {690 285 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW5].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW5
+            xywh {690 305 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW5].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 285 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW5].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 305 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW5].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 285 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW5].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 305 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW5].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[4]} {
+          xywh {860 295 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 335 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 335 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW6
+            xywh {690 340 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW6].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW6
+            xywh {690 360 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW6].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 340 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW6].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 360 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW6].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 340 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW6].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 360 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW6].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[5]} {
+          xywh {860 350 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 390 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 390 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW7
+            xywh {690 395 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW7].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW7
+            xywh {690 415 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW7].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 395 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW7].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 415 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW7].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 395 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW7].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 415 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW7].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[6]} {
+          xywh {860 405 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 445 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 445 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW8
+            xywh {690 450 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW8].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW8
+            xywh {690 470 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW8].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 450 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW8].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 470 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW8].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 450 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW8].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 470 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW8].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[7]} {
+          xywh {860 460 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 500 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 500 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW9
+            xywh {690 505 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW9].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW9
+            xywh {690 525 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW9].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 505 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW9].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 525 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW9].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 505 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW9].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 525 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW9].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[8]} {
+          xywh {860 515 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+      Fl_Group {} {
+        xywh {655 555 225 50}
+      } {
+        Fl_Group {} {open
+          xywh {655 555 205 50}
+        } {
+          Fl_Value_Output {} {
+            label VSW10
+            xywh {690 560 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW10].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            label ISW10
+            xywh {690 580 45 20} labelfont 4 labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW10].digital_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 560 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW10].analog_out = o;}
+          }
+          Fl_Value_Output {} {
+            xywh {735 580 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW10].analog_out = o;}
+          }
+          Fl_Value_Input {} {
+            xywh {795 560 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_VSW10].analog_in = o;}
+            class TlmInput
+          }
+          Fl_Value_Input {} {
+            xywh {795 580 60 20} labelsize 12 textsize 12
+            code0 {tlm[CHANNEL_ISW10].analog_in = o;}
+            class TlmInput
+          }
+        }
+        Fl_Light_Button {switch_in[9]} {
+          xywh {860 570 20 20} box NO_BOX selection_color 2 labelsize 25
+          class {itc::eps::SwitchButton}
+        }
+      }
+    }
+  }
+} 
