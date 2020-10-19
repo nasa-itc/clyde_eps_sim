@@ -1,7 +1,7 @@
 project(eps_cmd CXX)
 
 # boost
-find_package(Boost REQUIRED QUIET COMPONENTS program_options)
+find_package(Boost REQUIRED QUIET COMPONENTS program_options system)
 
 # nos
 find_package(ITC_Common REQUIRED QUIET COMPONENTS itc_logger)
